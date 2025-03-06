@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Tic Tac Toe</title>
+</head>
+
+<body>
+    <header id="startScreen">
+        <h1 id="title">Tic <span>Tac Toe </span> <br>Cat Paw ฅ(=🝦ᆺ🝦=)✧</h1>
+        <div id="gameMode">
+            <label>
+                <input type="radio" id="vsPlayers" name="mode" checked> Joueur Vs Joueur
+            </label>
+            <label>
+                <input type="radio" id="vsComputer" name="mode"> Joueur Vs Ordinateur
+            </label>
+            <button id="startButton">Commencer</button>
+        </div>
+    </header>
+    <main id="gameScreen">
+        <p>Dans ce jeu au tour par tour, vous devez être le premier à aligner 3 symboles identiques horizontalement,
+            verticalement ou en diagonale. Cliquez sur la case choisie pour faire apparaître votre symbole.</p>
+        <div id="gameContainer"></div>
+        <button id="replayButton">Rejouer</button>
+        <p id="winner"></p>
+    </main>
+    <footer>
+        <p>©Réalisé dans la douleur</p>
+    </footer>
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>

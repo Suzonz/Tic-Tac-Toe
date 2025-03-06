@@ -1,0 +1,143 @@
+@font-face {
+    font-family: "catcafe";
+    src: url(../fonts/catcafe.ttf);
+}
+
+body {
+    margin: 0;
+    background-color: rgb(115, 129, 172);
+}
+
+#startScreen {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#gameScreen {
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+h1 {
+    font-family: 'catcafe';
+    font-size: 60px;
+}
+
+#startButton {
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 40px;
+    font-family: 'catcafe';
+    cursor: pointer;
+    width: auto;
+    margin-top: 20px;
+}
+
+button:hover {
+    box-shadow: 0px 0px 5px rgb(56, 56, 56);
+}
+
+#gameMode {
+    display: flex;
+    flex-direction: column;
+    font-family: 'catcafe';
+    font-size: 30px;
+    background-color: rgb(231, 231, 231);
+    padding: 30px;
+    text-align: justify;
+    border: solid 2px rgb(0, 0, 0);
+    border-radius: 15px;
+
+}
+
+#replayButton {
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 40px;
+    font-family: 'catcafe';
+    cursor: pointer;
+    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    transform: translate(-15%, -50%);
+    display: none;
+}
+
+span {
+    position: relative;
+    display: inline-block;
+}
+
+span::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 7px;
+    background: black;
+    transform: rotate(-12deg);
+    transform-origin: center;
+}
+
+span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 7px;
+    background: black;
+    transform: rotate(12deg);
+    transform-origin: center;
+}
+
+main {
+    p {
+        font-family: 'catcafe';
+        font-size: 30px;
+        text-align: center;
+        margin: 40px 10%;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    #gameContainer {
+        display: flex;
+        justify-content: center;
+
+        div {
+            background-color: rgb(255, 255, 255);
+
+        }
+    }
+}
+
+.cell {
+    border: 1px black solid;
+    height: 20px;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
+
+img {
+    width: 200px;
+}
+
+footer {
+    font-family: 'catcafe';
+    position: fixed;
+    bottom: 0;
+    margin-left: 10px;
+}
