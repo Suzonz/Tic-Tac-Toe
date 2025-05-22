@@ -6,6 +6,9 @@
 body {
     margin: 0;
     background-color: rgb(115, 129, 172);
+    min-height: 100vh;
+    min-width: 100vw;
+    box-sizing: border-box;
 }
 
 #startScreen {
@@ -22,17 +25,57 @@ body {
 }
 
 #gameScreen {
-    display: none;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     z-index: 1;
+    top: 0;
+    left: 0;
+    background: none;
 }
+
+/* --- CENTRAGE PARFAIT DU CONTENEUR DE RÈGLES --- */
+#rulesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: transparent;
+}
+
+/* --- CENTRAGE PARFAIT DE LA GRILLE --- */
+#gameContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    width: 100vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Si tu veux que la grille prenne moins de place sur mobile, adapte min-height ou width */
 
 h1 {
     font-family: 'catcafe';
     font-size: 60px;
 }
 
-#startButton {
+#startButton,
+#chooseButton,
+#playButton {
     border-radius: 30px;
     padding: 20px;
     font-size: 40px;
@@ -46,6 +89,7 @@ button:hover {
     box-shadow: 0px 0px 5px rgb(56, 56, 56);
 }
 
+#chooseGame,
 #gameMode {
     display: flex;
     flex-direction: column;
@@ -56,7 +100,6 @@ button:hover {
     text-align: justify;
     border: solid 2px rgb(0, 0, 0);
     border-radius: 15px;
-
 }
 
 #replayButton {
@@ -69,6 +112,20 @@ button:hover {
     position: absolute;
     top: 50%;
     left: 15%;
+    transform: translate(-15%, -50%);
+    display: none;
+}
+
+#backToMenu {
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 40px;
+    font-family: 'catcafe';
+    cursor: pointer;
+    width: auto;
+    position: absolute;
+    top: 50%;
+    right: 15%;
     transform: translate(-15%, -50%);
     display: none;
 }
@@ -102,37 +159,45 @@ span::after {
     transform-origin: center;
 }
 
-main {
-    p {
-        font-family: 'catcafe';
-        font-size: 30px;
-        text-align: center;
-        margin: 40px 10%;
-        margin-bottom: 50px;
-        text-align: center;
-    }
+main p,
+#rulesMorpion,
+#rulesPuissanceQ {
+    font-family: 'catcafe';
+    font-size: 30px;
+    text-align: center;
+    margin: 0% 15% 3%;
+    display: block;
+}
 
-    #gameContainer {
-        display: flex;
-        justify-content: center;
-
-        div {
-            background-color: rgb(255, 255, 255);
-
-        }
-    }
+#playButton {
+    display: block;
+    margin: 0 auto 40px auto;
 }
 
 .cell {
     border: 1px black solid;
-    height: 20px;
-    width: 200px;
-    height: 200px;
     cursor: pointer;
+    width: 110px;
+    height: 110px;
+    position: relative;
+    background-color: rgb(255, 255, 255);
 }
 
-img {
+.sizeMorpion {
     width: 200px;
+    height: 200px;
+}
+
+.sizePuissanceQ {
+    width: 110px;
+    height: 110px;
+}
+
+.cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
 footer {
@@ -140,4 +205,37 @@ footer {
     position: fixed;
     bottom: 0;
     margin-left: 10px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.col {
+    position: relative;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.token {
+    transition: transform 0.4s ease-in-out;
+    pointer-events: none;
+}
+
+/* Pour cacher les règles au début, si besoin */
+#rulesMorpion,
+#rulesPuissanceQ {
+    display: none;
+    cursor: pointer;
+}
+
+#winner {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'catcafe';
+    font-size: 40px;
+    z-index: 20;
+    margin: 10px;
 }

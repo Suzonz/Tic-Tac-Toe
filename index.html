@@ -5,31 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="shortcut icon" href="./assets/images/cat.png" type="image/x-icon">
     <title>Tic Tac Toe</title>
 </head>
 
 <body>
     <header id="startScreen">
         <h1 id="title">Tic <span>Tac Toe </span> <br>Cat Paw ฅ(=🝦ᆺ🝦=)✧</h1>
+        <div id="chooseGame">
+            <label><input type="radio" id="morpion" name="game" checked>Morpion</label>
+            <label><input type="radio" id="puissanceQ" name="game">Puissance 4</label>
+            <button id="chooseButton">Choisir</button>
+        </div>
         <div id="gameMode">
-            <label>
-                <input type="radio" id="vsPlayers" name="mode" checked> Joueur Vs Joueur
-            </label>
-            <label>
-                <input type="radio" id="vsComputer" name="mode"> Joueur Vs Ordinateur
-            </label>
-            <button id="startButton">Commencer</button>
+            <label><input type="radio" id="vsPlayers" name="mode" checked> Joueur Vs Joueur</label>
+            <label><input type="radio" id="vsComputer" name="mode"> Joueur Vs Ordinateur</label>
+            <button id="startButton">Défier</button>
         </div>
     </header>
     <main id="gameScreen">
-        <p>Dans ce jeu au tour par tour, vous devez être le premier à aligner 3 symboles identiques horizontalement,
-            verticalement ou en diagonale. Cliquez sur la case choisie pour faire apparaître votre symbole.</p>
+        <div id="rulesContainer">
+            <p id="rulesMorpion">Dans ce jeu au tour par tour, vous devez etre le premier a aligner 3 symboles
+                identiques
+                horizontalement,
+                verticalement ou en diagonale. Cliquez sur la case choisie pour faire apparaître votre symbole.</p>
+            <p id="rulesPuissanceQ">Dans ce jeu au tour par tour, vous devez etre le premier a aligner 4 symboles
+                identiques
+                horizontalement,
+                verticalement ou en diagonale. Cliquez sur la case choisie pour faire apparaitre votre symbole.</p>
+            <button id="playButton">Jouer</button>
+        </div>
         <div id="gameContainer"></div>
         <button id="replayButton">Rejouer</button>
+        <button id="backToMenu">Menu</button>
         <p id="winner"></p>
     </main>
     <footer>
-        <p>©Réalisé dans la douleur</p>
+        <p>©Suzon Robin</p>
     </footer>
     <script src="./assets/js/main.js"></script>
 </body>
