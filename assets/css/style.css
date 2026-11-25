@@ -7,10 +7,14 @@ body {
     margin: 0;
     background-color: rgb(115, 129, 172);
     min-height: 100vh;
-    min-width: 100vw;
     box-sizing: border-box;
+    /* Taille d'une case : la plus grande qui tient dans l'écran,
+       en gardant la place du message du gagnant et des boutons */
+    --cell-morpion: min(200px, calc((100vh - 230px) / 3), calc((100vw - 32px) / 3));
+    --cell-puissance4: min(110px, calc((100vh - 230px) / 6), calc((100vw - 16px) / 7));
 }
 
+/* Menu centré ; s'il est plus haut que l'écran, la page défile au lieu de le couper */
 #startScreen {
     text-align: center;
     display: flex;
@@ -19,18 +23,25 @@ body {
     flex-direction: column;
     position: absolute;
     z-index: 2;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 16px 0 40px;
+    box-sizing: border-box;
 }
 
+/* Écran de jeu : message du gagnant, grille, puis boutons, les uns sous les autres */
 #gameScreen {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 16px;
+    padding: 16px 0 40px;
+    box-sizing: border-box;
     position: absolute;
     z-index: 1;
     top: 0;
@@ -53,20 +64,18 @@ body {
     background: transparent;
 }
 
-/* --- CENTRAGE PARFAIT DE LA GRILLE --- */
+/* --- GRILLE --- */
 #gameContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 60vh;
-    width: 100vw;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
-/* Si tu veux que la grille prenne moins de place sur mobile, adapte min-height ou width */
+#endButtons {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+}
 
 h1 {
     font-family: 'catcafe';
@@ -102,31 +111,14 @@ button:hover {
     border-radius: 15px;
 }
 
-#replayButton {
-    border-radius: 30px;
-    padding: 20px;
-    font-size: 40px;
-    font-family: 'catcafe';
-    cursor: pointer;
-    width: auto;
-    position: absolute;
-    top: 50%;
-    left: 15%;
-    transform: translate(-15%, -50%);
-    display: none;
-}
-
+#replayButton,
 #backToMenu {
     border-radius: 30px;
-    padding: 20px;
-    font-size: 40px;
+    padding: 12px 28px;
+    font-size: 36px;
     font-family: 'catcafe';
     cursor: pointer;
     width: auto;
-    position: absolute;
-    top: 50%;
-    right: 15%;
-    transform: translate(-15%, -50%);
     display: none;
 }
 
@@ -184,13 +176,13 @@ main p,
 }
 
 .sizeMorpion {
-    width: 200px;
-    height: 200px;
+    width: var(--cell-morpion);
+    height: var(--cell-morpion);
 }
 
 .sizePuissanceQ {
-    width: 110px;
-    height: 110px;
+    width: var(--cell-puissance4);
+    height: var(--cell-puissance4);
 }
 
 .cell img {
@@ -229,13 +221,82 @@ footer {
     cursor: pointer;
 }
 
+/* Le message garde sa place même vide : la grille ne bouge pas en fin de partie */
 #winner {
-    position: absolute;
-    top: 0%;
-    left: 50%;
-    transform: translateX(-50%);
     font-family: 'catcafe';
     font-size: 40px;
-    z-index: 20;
-    margin: 10px;
+    line-height: 1.2;
+    min-height: 1.2em;
+    margin: 0;
+    text-align: center;
+}
+
+/* --- PETITS ÉCRANS (téléphones) --- */
+@media (max-width: 600px) {
+    body {
+        --cell-morpion: min(200px, calc((100vh - 200px) / 3), calc((100vw - 32px) / 3));
+        --cell-puissance4: min(110px, calc((100vh - 200px) / 6), calc((100vw - 16px) / 7));
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    #chooseGame,
+    #gameMode {
+        font-size: 24px;
+        padding: 20px;
+    }
+
+    #startButton,
+    #chooseButton,
+    #playButton,
+    #replayButton,
+    #backToMenu {
+        font-size: 26px;
+        padding: 10px 22px;
+    }
+
+    #rulesMorpion,
+    #rulesPuissanceQ {
+        font-size: 22px;
+        margin: 0 24px 24px;
+    }
+
+    #winner {
+        font-size: 26px;
+    }
+}
+
+/* --- ÉCRANS PEU HAUTS (téléphone à l'horizontale) --- */
+@media (max-height: 500px) {
+    h1 {
+        font-size: 34px;
+        margin: 0 0 12px;
+    }
+
+    #chooseGame,
+    #gameMode {
+        font-size: 22px;
+        padding: 14px 20px;
+    }
+
+    #startButton,
+    #chooseButton,
+    #playButton,
+    #replayButton,
+    #backToMenu {
+        font-size: 24px;
+        padding: 8px 20px;
+        margin-top: 10px;
+    }
+
+    #rulesMorpion,
+    #rulesPuissanceQ {
+        font-size: 22px;
+    }
+
+    #winner {
+        font-size: 26px;
+    }
 }

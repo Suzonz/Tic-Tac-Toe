@@ -37,7 +37,7 @@ function startGame() {
         document.querySelector('#startButton').addEventListener('click', () => {
             changeGameMode();
             document.querySelector("#startScreen").classList.add("hidden");
-            document.querySelector("#gameScreen").style.display = "block";
+            document.querySelector("#gameScreen").style.display = "flex";
             // Affiche la règle et le bouton jouer, cache la grille
             gameContainer.style.display = "none";
             replayButton.style.display = "none";
@@ -240,19 +240,21 @@ function dropTokenPuissance4(col) {
     const cells = Array.from(colDiv.querySelectorAll('.cell'));
     const targetCell = cells.find(cell => parseInt(cell.dataset.row) === row);
 
+    // Taille réelle d'une case : elle s'adapte à l'écran (voir style.css)
+    const size = targetCell.offsetHeight;
     const tempToken = currentPlayer.cloneNode(true);
     tempToken.style.position = "absolute";
     tempToken.style.left = "0";
-    tempToken.style.top = "-120px";
+    tempToken.style.top = `-${size}px`;
     tempToken.style.transition = "top 0.35s";
     tempToken.style.zIndex = 2;
-    tempToken.style.width = "110px";
-tempToken.style.height = "110px";
-tempToken.style.objectFit = "contain";
+    tempToken.style.width = `${size}px`;
+    tempToken.style.height = `${size}px`;
+    tempToken.style.objectFit = "contain";
     colDiv.appendChild(tempToken);
 
     setTimeout(() => {
-        tempToken.style.top = `${(5 - row) * 110}px`;
+        tempToken.style.top = `${(5 - row) * size}px`;
     }, 10);
 
     setTimeout(() => {
