@@ -1,4 +1,4 @@
-# Tic Tac Toe Cat Paw
+# Tic Cat Paw
 
 Two classic games in one page, with cats: **tic-tac-toe** and **connect four**.
 Cookie-Cat against Fish-Cat, with a friend or against the computer.
