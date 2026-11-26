@@ -10,6 +10,12 @@ const rulesPuissanceQ = document.querySelector("#rulesPuissanceQ");
 const playButton = document.querySelector("#playButton");
 const cat1 = new Audio("assets/audio/cat1.mp3");
 const cat2 = new Audio("assets/audio/cat2.mp3");
+
+// Joué dans le portfolio de Suzon : quand son son est coupé, les miaulements aussi
+window.addEventListener("message", (e) => {
+    if (e.source !== window.parent || !e.data || e.data.type !== "portfolio98:mute") return;
+    cat1.muted = cat2.muted = e.data.muted;
+});
 const cookieCat = document.createElement("img");
 cookieCat.src = "./assets/images/cookieCat.png";
 cookieCat.textContent = "cookieCat";
